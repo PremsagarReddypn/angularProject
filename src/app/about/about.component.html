@@ -59,7 +59,7 @@
 
     <div fxFlex>
         <h2>Corporate Leadership</h2>
-        <mat-list *ngIf = "leaders">
+        <mat-list *ngIf = "leaders" [@expand]>
             <mat-list-item *ngFor="let ldr of leaders">
                 <div fxLayout="column" fxLayout.gt-sm="row">
                     <div fxFlex="30"></div>
