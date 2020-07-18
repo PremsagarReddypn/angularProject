@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Dish} from '../shared/dish';
 import { DishService } from '../services/dish.service';
 import { flyInOut,expand } from '../animations/app.animation';
+import { baseURL } from '../shared/baseurl'
 
 
 @Component({
@@ -26,7 +27,7 @@ export class MenuComponent implements OnInit {
   
 
   constructor(private dishService: DishService,
-    @Inject('BaseURL') private BaseURL) { }
+    @Inject('BaseURL') public BaseURL) { }
 
   ngOnInit(): void {
     this.dishService.getDishes()

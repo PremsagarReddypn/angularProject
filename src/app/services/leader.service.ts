@@ -23,8 +23,14 @@ export class LeaderService {
     .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
+  getLeader(id: number): Observable<Leader> {
+    return this.http.get<Leader>(baseURL + 'leaders/' + id)
+    .pipe(catchError(this.processHTTPMsgService.handleError));
+  }
+
   getFeaturedLeader(): Observable<Leader>{
-    return this.http.get<Leader>(baseURL + 'leaders?featured = true').pipe(delay(2000))
+    return this.http.get<Leader[]>(baseURL + 'leaders?featured = true')
+    .pipe(map(leaders => leaders[0])).pipe(delay(2000))
     .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 }

@@ -22,14 +22,14 @@ export class PromotionService {
     .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
-  getPromotion(id: string): Observable<Promotion> {
+  getPromotion(id: number): Observable<Promotion> {
     return this.http.get<Promotion>(baseURL + 'promotions/'+ id).pipe(delay(2000))
     .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
   getFeaturedPromotion(): Observable<Promotion> {
-    return this.http.get<Promotion>(baseURL + 'promotions?featured = true')
-      .pipe(map(dishes => PROMOTIONS[0]))
+    return this.http.get<Promotion[]>(baseURL + 'promotions?featured = true')
+      .pipe(map(promotions => promotions[0]))
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
     
